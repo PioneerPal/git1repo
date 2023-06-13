@@ -135,33 +135,29 @@ function MegszerzettEremekStatisztika(adatok:helsinki[]):void{
  //5.Feladat. 
 
  function OlimpiaoPontokSzama(adatok:helsinki[]):void{
-    let elsoHelyezes:number=0;
-    let msodikHelyezes:number=0;
-    let harmadikHelyezes:number=0;
-    let negyedikHelyezes:number=0;
-    let otodikHelyezes:number=0;
-    let hatodikHelyezes:number=0;
+    let osszPontszam:number=0;
+    
     for(let i:number=0; i<adatok.length; i++){
         if(adatok[i].helyezes==1){
-            elsoHelyezes+=7;
+            osszPontszam+=7;
         }
         else if(adatok[i].helyezes==2){
-            msodikHelyezes+=5;
+            osszPontszam+=5;
         }
         else if(adatok[i].helyezes==3){
-            harmadikHelyezes+=4;
+            osszPontszam+=4;
         }
         else if(adatok[i].helyezes==4){
-            negyedikHelyezes+=3;
+            osszPontszam+=3;
         }
         else if(adatok[i].helyezes==5){
-            otodikHelyezes+=2;
+            osszPontszam+=2;
         }
         else if(adatok[i].helyezes==6){
-            hatodikHelyezes+=1;
+            osszPontszam+=1;
         }
     }
-    let osszPontszam=elsoHelyezes+msodikHelyezes+harmadikHelyezes+negyedikHelyezes+otodikHelyezes+hatodikHelyezes;
+ 
 
     console.log("Olimpiai pontok száma: "+osszPontszam);
     

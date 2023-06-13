@@ -165,7 +165,7 @@ function TornavagyUszasSzerzettTobbErmek(adatok) {
     }
 }
 TornavagyUszasSzerzettTobbErmek(helsinkiAdatok);
-//7.Feladat.
+//7.Feladat. (hát elég teszkóslett)
 function LegtobbSportolo(adatok) {
     var maxSportolok = adatok[0].sportolokSzama;
     var helyezesek = 0;

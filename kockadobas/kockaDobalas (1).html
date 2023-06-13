@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kockadobálás</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="kocka.css">
+    
+</head>
+     
+      
+
+
+<body>
+
+    <div class="container">
+        <div class="cube">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+        </div>
+     </div>
+
+     <div class="container1">
+        <div class="cube1">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+        </div>
+     </div>
+
+     <div class="container2">
+        <div class="cube2">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+        </div>
+     </div>
+        <table class="table table-striped table-sm table-hover">
+            <tr><th>Dobás értéke</th><th>Dobás mennyisége</th></tr>
+            <tr><td>1-es dobások</td><td id="egyes"></td></tr>
+            <tr><td>2-es dobások</td><td id="kettes"></td></tr>
+            <tr><td>3-as dobások</td><td id="harmas"></td></tr>
+            <tr><td>4-es dobások</td><td id="negyes"></td></tr>
+            <tr><td>5-ös dobások</td><td id="otos"></td></tr>
+            <tr><td>6-os dobások</td><td id="hatos"></td></tr>
+            <tr><td>Dobások átlaga:</td><td id=atlag></td></tr>
+            <tr><td>Dobások össz értéke:</td><td id="osszes"></td></tr>
+            <tr><td>Aktuális Dobások össz értéke:</td><td id="aktualisOsszertek"></td></tr>
+            <tr><td>Eddigi legnagyobb dobás:</td><td id="legnagyobbdobas"></td></tr>
+            <tr><td>Eddig ennyi dobásban fordult elő a hatos:</td><td id="egyHatos"></td></tr>
+            <tr><td>Eddigi ennyiszer fordult elő összesen a hatos:</td><td id="osszHatos"></td></tr>
+            <tr><td>Három hatos dobás:</td><td id="haromHatos">még nem volt</td></tr>
+            <tr><td>Ennyiszer volt három azonos szám:</td><td id="haromAzonos"></td></tr>
+            <tr><td>legnagyobb számot mutató kocka értéke a másik két kocka értékének összege :</td><td id="kockaErtekeMasikKettoErteke">még nem volt</td></tr>
+
+            
+        </table>
+        <button id="kockaEldobasa" class="form-control mb-2 btn btn-danger">Kocka Dobás</button>
+
+
+       
+        
+
+        <script>
+
+            //Hát ez most elég csúnyán megírt, meg hiányos kód 
+
+
+
+            //Segédfüggvény
+            function KockaDobas(){
+                return Math.round(Math.random()*5)+1; //1 és 6 közötti érték(dobás) generálása
+            }
+
+            kockaEldobasa.addEventListener("click", kockaMegjelenites);
+            let dobasok=[];
+            let dobasMax=[];
+            let legalabbEgyHatos=[];
+            let osszesHatos=[];
+            let haromAzonosSzam=[];
+            function kockaMegjelenites(){
+                let kockaSzam=KockaDobas();
+                let kockaSzam1=KockaDobas();
+                let kockaSzam2=KockaDobas();
+                dobasok.push(kockaSzam);
+                dobasok.push(kockaSzam1);
+                dobasok.push(kockaSzam2);
+                let aktualisDobasokOsszege=kockaSzam+kockaSzam1+kockaSzam2;
+                dobasMax.push(aktualisDobasokOsszege);
+               
+
+
+
+
+
+                if(kockaSzam==6 ||kockaSzam1==6 ||  kockaSzam2==6){             //ezt kéne majd még átrakni functionre
+                       let j=1;
+                       legalabbEgyHatos.push(j);
+
+                }
+
+
+
+
+
+
+
+                if(kockaSzam==6){             //ezt kéne majd még átrakni functionre
+                       let k=1;
+                       osszesHatos.push(k);
+
+                }
+                if(kockaSzam1==6){             //ezt kéne majd még átrakni functionre
+                       let l=1;
+                       osszesHatos.push(l);
+
+                }
+                if(kockaSzam2==6){             //ezt kéne majd még átrakni functionre
+                       let m=1;
+                       osszesHatos.push(m);
+
+                }
+
+
+
+
+
+                if(kockaSzam==6 && kockaSzam1==6 && kockaSzam2==6){             //ezt kéne majd még átrakni functionre
+                    document.querySelector("#haromHatos").innerHTML="volt már";
+
+                }
+
+
+
+
+                if(kockaSzam==kockaSzam1==kockaSzam2){
+                    let n=1;
+                       haromAzonosSzam.push(n);
+                }
+
+
+
+
+               if((kockaSzam+kockaSzam1==kockaSzam2) || (kockaSzam2+kockaSzam1==kockaSzam) || (kockaSzam2+kockaSzam==kockaSzam1)){
+                document.querySelector("#kockaErtekeMasikKettoErteke").innerHTML="volt ilyen, a legutóbbi:" +kockaSzam2+","+kockaSzam+","+kockaSzam1;
+               } 
+
+
+
+
+
+
+
+
+
+
+                
+
+                let maxErtek=dobasMax[0];                       //ezt kéne majd még átrakni functionre
+               for(let i=1;i<dobasMax.length;i++)
+                {
+	               if(dobasMax[i]>maxErtek)
+                 {
+    	          maxErtek=dobasMax[i];        
+                 }
+                }
+
+
+
+
+
+
+          
+                StatisztikaMegjelenites(DobasokSzama());
+                let atlag=DobasokOsszege()/dobasok.length;
+
+
+                document.querySelector("#atlag").innerHTML=atlag
+                document.querySelector("#aktualisOsszertek").innerHTML=aktualisDobasokOsszege
+                document.querySelector("#legnagyobbdobas").innerHTML=maxErtek;
+                document.querySelector("#egyHatos").innerHTML=legalabbEgyHatos.length;
+                document.querySelector("#osszHatos").innerHTML=osszesHatos.length;
+                document.querySelector("#haromAzonos").innerHTML=haromAzonosSzam.length;
+                
+                
+            
+                if(kockaSzam==1){
+                    document.querySelector(".cube").style.animation ="forgatoEgy 2s  ease both ";
+                    }
+                    else if(kockaSzam==2){
+                        document.querySelector(".cube").style.animation ="forgatoKetto 2s  ease both ";
+                    }
+                    else if(kockaSzam==3){
+                        document.querySelector(".cube").style.animation ="forgatoHarom 2s  ease both ";
+                    }
+                    else if(kockaSzam==4){
+                        document.querySelector(".cube").style.animation ="forgatoNegy 2s  ease both ";
+                    }
+                    else if(kockaSzam==5){
+                        document.querySelector(".cube").style.animation ="forgatoOt 2s  ease both ";
+                    }
+                    else{
+                        document.querySelector(".cube").style.animation ="forgatoHat 2s  ease both ";
+                    }
+
+
+
+                    if(kockaSzam1==1){
+                    document.querySelector(".cube1").style.animation ="forgatoEgy 2s  ease both ";
+                    }
+                    else if(kockaSzam1==2){
+                        document.querySelector(".cube1").style.animation ="forgatoKetto 2s  ease both ";
+                    }
+                    else if(kockaSzam1==3){
+                        document.querySelector(".cube1").style.animation ="forgatoHarom 2s  ease both ";
+                    }
+                    else if(kockaSzam1==4){
+                        document.querySelector(".cube1").style.animation ="forgatoNegy 2s  ease both ";
+                    }
+                    else if(kockaSzam1==5){
+                        document.querySelector(".cube1").style.animation ="forgatoOt 2s  ease both ";
+                    }
+                    else{
+                        document.querySelector(".cube1").style.animation ="forgatoHat 2s  ease both ";
+                    }
+
+
+                    if(kockaSzam2==1){
+                    document.querySelector(".cube2").style.animation ="forgatoEgy 2s  ease both ";
+                    }
+                    else if(kockaSzam2==2){
+                        document.querySelector(".cube2").style.animation ="forgatoKetto 2s  ease both ";
+                    }
+                    else if(kockaSzam2==3){
+                        document.querySelector(".cube2").style.animation ="forgatoHarom 2s  ease both ";
+                    }
+                    else if(kockaSzam2==4){
+                        document.querySelector(".cube2").style.animation ="forgatoNegy 2s  ease both ";
+                    }
+                    else if(kockaSzam2==5){
+                        document.querySelector(".cube2").style.animation ="forgatoOt 2s  ease both ";
+                    }
+                    else{
+                        document.querySelector(".cube2").style.animation ="forgatoHat 2s  ease both ";
+                    }
+
+
+
+                }
+                
+            function DobasokSzama(){
+                let dobasMennyiseg=[0,0,0,0,0,0,0];//0. az elemek összege
+                for(let i=0;i<dobasok.length;i++)
+                {
+                    dobasMennyiseg[0]+=dobasok[i];
+                    dobasMennyiseg[dobasok[i]]++;
+                }
+                return dobasMennyiseg;
+            }
+
+
+
+            function StatisztikaMegjelenites(eredmenyek){
+                document.querySelector("#egyes").innerHTML=eredmenyek[1];
+                document.querySelector("#kettes").innerHTML=eredmenyek[2];
+                document.querySelector("#harmas").innerHTML=eredmenyek[3];
+                document.querySelector("#negyes").innerHTML=eredmenyek[4];
+                document.querySelector("#otos").innerHTML=eredmenyek[5];
+                document.querySelector("#hatos").innerHTML=eredmenyek[6];
+                document.querySelector("#osszes").innerHTML=eredmenyek[0];
+            }
+
+            function DobasokOsszege(){
+                let dobasMennyiseg=[0];
+                for(let i=0;i<dobasok.length;i++)
+                {
+                    dobasMennyiseg[0]+=dobasok[i];
+                    
+                }
+                return dobasMennyiseg;
+            }
+
+
+           function rekord(){
+               let maxErtek=dobasMax[0];
+               for(let i=1;i<dobasMax.length;i++)
+               {
+	               if(dobasMax[i]>maxErtek)
+                 {
+    	          maxErtek=dobasMax[i];        
+                 }
+                }
+                return maxErtek
+           }
+
+        
+            
+        </script>
+</body>
+</html>

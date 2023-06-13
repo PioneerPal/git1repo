@@ -1,0 +1,131 @@
+body{
+    background: rgb(117,232,180);
+    background: radial-gradient(circle, rgba(117,232,180,1) 0%, rgba(148,168,233,1) 100%);
+}
+
+.container{
+    width: 150px;
+    height: 150px;
+    margin: 150px auto;
+    perspective: 600px;
+}
+
+.container1{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 200px;
+    top: 150px;
+    perspective: 600px;
+}
+
+.container2{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    right: 200px;
+    top: 150px;
+    perspective: 600px;
+}
+
+
+.cube{
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+    transform: translateZ(-75px) ;
+    position: relative;
+}
+
+.cube1{
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+    transform: translateZ(-75px) ;
+    position: relative;
+}
+
+.cube2{
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+    transform: translateZ(-75px) ;
+    position: relative;
+}
+
+
+@keyframes forgatoEgy{
+    from {transform: rotateY(0deg);}
+	to {transform: rotateY(720deg) rotateX(360deg);}
+}
+
+@keyframes forgatoKetto{
+    from {transform: rotateY(0deg);}
+	to {transform: rotateY(720deg) rotateX(450deg);}
+}
+
+@keyframes forgatoHarom{
+    from {transform: rotateY(0deg);}
+	to {transform: rotateY(-450deg) rotateX(720deg);}
+}
+
+@keyframes forgatoNegy{
+    from {transform: rotateY(0deg);}
+	to {transform: rotateY(450deg) rotateX(720deg);}
+}
+
+@keyframes forgatoOt{
+    from {transform: rotateY(0deg);}
+	to {transform: rotateY(720deg) rotateX(-450deg);}
+}
+@keyframes forgatoHat{
+    from {transform: rotateY(0deg);}
+	to {transform: rotateY(720deg) rotateX(540deg);}
+}
+
+
+
+
+
+
+.face{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+}
+
+.front{
+    background-image: url(cube1.jpg);
+    background-size: 150px;
+    transform: rotateY(0deg) translateZ(75px);
+}
+
+.back{
+    background-image: url(cube6.jpg);
+    background-size: 150px;
+    transform: rotateY(180deg) translateZ(75px);
+}
+
+.left{
+    background-image: url(cube4.jpg);
+    background-size: 150px;
+    transform: rotateY(-90deg) translateZ(75px);
+}
+
+.right{
+    background-image: url(cube3.jpg);
+    background-size: 150px;
+    transform: rotateY(90deg) translateZ(75px);
+}
+
+.top{
+    background-image: url(cube5.jpg);
+    background-size: 150px;
+    transform: rotateX(90deg) translateZ(75px);
+}
+
+.bottom{
+    background-image: url(cube2.jpg);
+    background-size: 150px;
+    transform: rotateX(-90deg) translateZ(75px);
+}
